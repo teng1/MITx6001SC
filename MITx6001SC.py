@@ -131,12 +131,101 @@ def function_example():
 #Scopes are evaluated into stack frames, main scope, function scope, sub function scope, when sub
 #function completes it exits the tack
 
-#Git test
 
-#Strings
-#Non-scalar values
+#LEC5
+#Tuples, Lists, Dictionaries.
 
-function_example()
+#Test = (1, 2, 3, 4, 5)
+#print Test[1] 
+#print Test[-1]
+#len(test)
+
+def tuple_example(): 
+	x = 100
+	divisors = ()
+	for i in range(1,x):
+		#print divisors
+		if x%i == 0:
+			divisors = divisors+(i,)
+			print divisors
+	print divisors[1: 3]
+	print len(divisors)
+
+#Slice - Subsequence of tuple or list
+#Lists, more usefel than tuples and more complicated.
+#Tuples are immutable, cannot change values in tuple
+#Lists are mutable, can change values in object - Mutability
+#Append is a Method in python - an alternative syntax to writing a function.
+#append(L, e) L.append(e) - Mutates L, i,e, side effect
+
+def lists_example():
+	Techs = ['MIT' ,'Cal Tech']
+	Ivys = ['Harvard' ,'Yale', 'Brown']
+	Univs = []
+	Univs.append(Techs)
+	print 'Univs =', Univs
+
+	Univs.append(Ivys)
+	print 'Univs =', Univs
+	for e in Univs:
+		print 'e =', e
+
+	flat = Techs + Ivys
+	print flat
+	
+	Arts = ['Art Center', 'Harvard']
+	for x in Arts:
+		if x in flat:
+			flat.remove(x)
+	print flat
+
+	flat.sort()
+	print flat
+	flat[1] = 'Umass'
+	print flat
+
+#Need to be aware of peril when using mutations.
+def lists_example2():
+	L1 = [2]
+	L2 = [L1, L1]
+	print 'L2 =', L2
+	L1[0] = 3
+        print 'L2 =', L2
+	L2[0] = 'a'
+	print 'L2 =', L2
+	L1 = [2]
+	print 'L2 =', L2
+
+#Alias - one object with multiple names, with Immutable aliasing aliasing is harmles
+#with multiple names for same mutable object, its something to worry about.
+def copy_list():
+	def copyList(lsource, ldest):
+		for e in lsource:
+			ldest.append(e)
+			print 'ldest =', ldest
+	L1 = []
+	L2 = [1,2,3]
+	copyList(L2,L1)
+	print L1
+	print L2
+
+#Dictionaries
+#1)elements are not ordered
+#2)indicies (keys) can be any immutable type, not just integers.
+#dict is a set of key value pairs
+#Dictionaries are sets not sequences 
+
+def dictionary_example():
+	e2f = {'one': 'un', 'two': 'deux', 'pi': '3.14159',\
+		'wine': 'du vin'}
+	print e2f
+
+
+dictionary_example()
+#copy_list()
+#lists_example2()
+#lists_example()
+#function_example()
 #bisect_program()
 #forloop_program()
 #branching_program()
