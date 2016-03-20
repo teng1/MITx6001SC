@@ -1,2 +1,2 @@
-# MITx600SC
+# MITx6001SC
 exercises, notes
