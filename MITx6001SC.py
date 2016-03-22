@@ -220,8 +220,102 @@ def dictionary_example():
 		'wine': 'du vin'}
 	print e2f
 
+#Lecture6
+#Exhastive enumerating list below, a dict is constant. 
+def list_example2():
+	def keysearch(L, K):
+		for elem in L:
+			if elem[0] == K:
+				return elem[1]
+		return None
+#Example dictionary usage
 
-dictionary_example()
+
+e2f = {'one': 'un', 'two': 'deux', 'pi': '3.14159', 'wine': 'du vin'}
+#keep the piece of code here to reuse, modular abstraction. Only need to debug once.
+#an example of devide and conqur, taking a hard problem and breaking it up.
+# -small problems are easier to solve
+# -soloutions to small problems can be combined to solve the big problem
+def translateWord(word, dictionary):
+	if word in dictionary:
+		return dictionary[word]
+	else:
+		return word
+#Need to think of assumptions in code
+def translate(scentence):
+	translation = ''
+	word = ''
+	for c in scentences:
+		if c != ' ':
+			word = word + c
+		else:
+			translation = translation + ' '	+ translateWord(word, e2f)
+	return translation[1:] + ' ' + translateWord(word, e2f)
+
+#Recursion
+#Not subtle, more than a programming techniquw
+#A way of describing problems
+#a way of designing soloutions(d&c)
+#Recusive definitons: if this and that is true and that is true than you are 
+
+#Base Case
+#	-direct awnser
+#	-recursive and inductive case, reduce to simplist cases
+
+#e.g bn = b*bn-1 if n >0
+#perfectly legal recursive definition
+#when faced with a problem think first how to recursivly break it down.
+def simpleExp(b, n):
+	if n == 0:
+		return 1
+	else:
+		return b * simpleExp(b, n-1)
+
+def Hanoi(n, f, t, s):
+	if n == 1:
+		print 'Move From ' + f + ' to ' + t
+	else:
+		Hanoi(n-1, f, s, t)
+		Hanoi(1, f, t, s)
+		Hanoi(n-1, s, t, f)
+#The Hanoi problem increases in steps exponentially, a stack of 64 will take an extreemly long time
+
+#How to write a program that finds palendrones 
+#1)if its one char, its a palendrone
+#2)take the first and last chars, if its the same then pull them off
+#3)do it again
+#4)dont care about spaces or caps, strip them out
+
+#This problem is solved recusively  by breaking it down into simple steps
+#Add print statements to help with debugging in interesting areas of the code
+# print ident, 'returning :', value, 'for :', value
+# print ident, 'about to do somthing'
+
+
+def lowercase(s):
+	import string
+	s = string.lower(s)
+	ans = ''
+	for c in s:
+		if c in string.lowercase:
+			ans = ans + c
+	return ans
+def isPal(s):
+	if len(s) <= 1:
+ 		return True
+	else:
+		return s[0] == s[-1] and isPal(s[1:-1])
+
+def isPalendrone(s):
+	"""Returns ture if is a palendrone and false otherwise """
+	return isPal(lowercase(s))
+
+#Review fibanachi base and recursive cases
+
+
+
+#list_example2()
+#dictionary_example()
 #copy_list()
 #lists_example2()
 #lists_example()
